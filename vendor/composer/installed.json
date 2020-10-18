@@ -1969,17 +1969,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "2.41.1",
-        "version_normalized": "2.41.1.0",
+        "version": "2.41.3",
+        "version_normalized": "2.41.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "91d8d8dca31936a137213d7c48f8ac981e501ff4"
+            "reference": "e148788eeae9b9b7b87996520358b86faad37b52"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/91d8d8dca31936a137213d7c48f8ac981e501ff4",
-            "reference": "91d8d8dca31936a137213d7c48f8ac981e501ff4",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e148788eeae9b9b7b87996520358b86faad37b52",
+            "reference": "e148788eeae9b9b7b87996520358b86faad37b52",
             "shasum": ""
         },
         "require": {
@@ -1998,7 +1998,7 @@
             "phpunit/phpunit": "^7.5 || ^8.0",
             "squizlabs/php_codesniffer": "^3.4"
         },
-        "time": "2020-10-10T11:06:56+00:00",
+        "time": "2020-10-12T20:36:09+00:00",
         "bin": [
             "bin/carbon"
         ],

@@ -6,9 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\BlogCategory' => $baseDir . '/app/Models/BlogCategory.php',
+    'App\\BlogComment' => $baseDir . '/app/Models/BlogComment.php',
+    'App\\BlogFile' => $baseDir . '/app/Models/BlogFile.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\mobileweb\\MainController' => $baseDir . '/app/Http/Controllers/mobileweb/MainController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
@@ -18,6 +22,11 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Models\\BlogPost' => $baseDir . '/app/Models/BlogPost.php',
+    'App\\Models\\ProductCategory' => $baseDir . '/app/Models/ProductCategory.php',
+    'App\\Models\\ProductImages' => $baseDir . '/app/Models/ProductImages.php',
+    'App\\Models\\ProductPrices' => $baseDir . '/app/Models/ProductPrices.php',
+    'App\\Models\\Products' => $baseDir . '/app/Models/Products.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

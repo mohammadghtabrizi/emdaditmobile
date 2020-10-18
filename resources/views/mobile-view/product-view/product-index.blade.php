@@ -1,246 +1,96 @@
         <div class="container">
             <input type="text" class="form-control form-control-lg search my-3" placeholder="جستجو کردن">
-
+            <div data-pagination='{"el": ".swiper-pagination"}' data-loop="true" class="swiper-index-slider swiper-init demo-swiper">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/product5.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product4.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product3.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product2.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product1.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product5.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product4.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product3.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product2.jpg" alt="" ></div>
+                    <div class="swiper-slide"><img src="img/product1.jpg" alt="" ></div>
+                </div>
+            </div>
             <h6 class="subtitle">دسته بندی ها</h6>
             <div class="row">
-                <!-- Swiper -->
-                <div class="swiper-container small-slide">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-1.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">کاناپه</a>
-                                            <p class="text-secondary small">سامسونگ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-2.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">صندلی </a>
-                                            <p class="text-secondary small">مونتاژ ، مارک ، قطعات</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-3.png" alt="" class="small-slide-right">
-                                        <div class="col-9">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">جدول</a>
-                                            <p class="text-secondary small">لنز ،  پوینت شات</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-1.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">کاناپه</a>
-                                            <p class="text-secondary small">سامسونگ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-2.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">صندلی </a>
-                                            <p class="text-secondary small">مونتاژ ، مارک ، قطعات</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-3.png" alt="" class="small-slide-right">
-                                        <div class="col-9">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">جدول</a>
-                                            <p class="text-secondary small">لنز ،  پوینت شات</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-1.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">کاناپه</a>
-                                            <p class="text-secondary small">سامسونگ</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-2.png" alt="" class="small-slide-right">
-                                        <div class="col-8">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">صندلی </a>
-                                            <p class="text-secondary small">مونتاژ ، مارک ، قطعات</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card shadow-sm border-0">
-                                <div class="card-body">
-                                    <div class="row no-gutters h-100">
-                                        <img src="img/image-3.png" alt="" class="small-slide-right">
-                                        <div class="col-9">
-                                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                            <a href="all-products.html" class="text-dark mb-1 mt-2 h6 d-block">جدول</a>
-                                            <p class="text-secondary small">لنز ،  پوینت شات</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                @foreach($productcategoryparents as $productcategoryparent)
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="card shadow-sm border-0 mb-3">
+                        <div class="card-body text-center p-4">
+                            <img src="{{asset('img/products/categories')}}/{{ $productcategoryparent->image_source }}" alt="" class="small-slide-right">
+                            <h5 class="mb-1" style="padding-top:15px;">{{$productcategoryparent->name}}</h5>
+                            <br>
+                            <button class="btn btn-outline-primary btn-sm">نمایش</button>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <h6 class="subtitle">محصولات <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
-            <div class="row">
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                            <div class="badge badge-success float-right mt-1">10 درصد تخفیف</div>
-                            <figure class="product-image"><img src="img/image-4.png" alt="" class=""></figure>
-                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">مبل خاکستری</a>
-                            <p class="text-secondary small mb-2">از سیملا وارد شده است</p>
-                            <h5 class="text-success font-weight-normal mb-0">120 تومان</h5>
-                            <p class="text-secondary small text-mute mb-0">1.0 کیلوگرم</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                            <div class="badge badge-success float-right mt-1">10 درصد تخفیف</div>
-                            <figure class="product-image"><img src="img/image-5.png" alt="" class=""></figure>
-                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">میز عتیقه</a>
-                            <p class="text-secondary small mb-2">مجموعه بی نظیر</p>
-                            <h5 class="text-success font-weight-normal mb-0">120 تومان</h5>
-                            <p class="text-secondary small text-mute mb-0">1.0 کیلوگرم</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                            <div class="badge badge-primary float-right mt-1">10 درصد تخفیف</div>
-                            <figure class="product-image"><img src="img/image-6.png" alt="" class=""></figure>
-                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">مبل راحتی</a>
-                            <p class="text-secondary small mb-2">سلطنتی و لوکس</p>
-                            <h5 class="text-success font-weight-normal mb-0">120 تومان</h5>
-                            <p class="text-secondary small text-mute mb-0">1.0 کیلوگرم</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                            <div class="badge badge-info float-right mt-1">50 درصد تخفیف</div>
-                            <figure class="product-image"><img src="img/image-7.png" alt="" class=""></figure>
-                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">حلق آویز</a>
-                            <p class="text-secondary small mb-2">بیشترین مطالبه</p>
-                            <h5 class="text-success font-weight-normal mb-0">120 تومان</h5>
-                            <p class="text-secondary small text-mute mb-0">1.0 کیلوگرم</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                            <div class="badge badge-success float-right mt-1">10 درصد تخفیف</div>
-                            <figure class="product-image"><img src="img/image-4.png" alt="" class=""></figure>
-                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">مبل خاکستری</a>
-                            <p class="text-secondary small mb-2">از سیملا وارد شده است</p>
-                            <h5 class="text-success font-weight-normal mb-0">120 تومان</h5>
-                            <p class="text-secondary small text-mute mb-0">1.0 کیلوگرم</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="card shadow-sm border-0 mb-4">
-                        <div class="card-body">
-                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                            <div class="badge badge-success float-right mt-1">10 درصد تخفیف</div>
-                            <figure class="product-image"><img src="img/image-5.png" alt="" class=""></figure>
-                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">میز عتیقه</a>
-                            <p class="text-secondary small mb-2">مجموعه بی نظیر</p>
-                            <h5 class="text-success font-weight-normal mb-0">120 تومان</h5>
-                            <p class="text-secondary small text-mute mb-0">1.0 کیلوگرم</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-        <div class="container-fluid bg-warning text-white my-3">
+        <div class="container-fluid bg-amazing-product text-dark my-3">
+            <h1 class="subtitle text-white">تخفیف های شگفت انگیز <a href="all-products.html" class="float-right small">مشاهده همه</a></h1>
             <div class="row">
-                <div class="container">
-                    <div class="row  py-4 ">
-                        <div class="col">
-                            <h1 class="text-uppercase mb-3">20٪ تخفیف فروش فصل</h1>
-                            <p class="mb-3">از کد <br><span class="text-dark">Coupan DFR0020 استفاده کنید</span></p>
-                        </div>
-                        <div class="col-5 col-md-3 col-lg-2 col-xl-2">
-                            <img src="img/image-10.png" alt="" class="mw-100 mt-3">
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col">
-                            <p>تمام مبلمان جدید را با قیمت بسیار پایین تهیه کنید</p>
+                @foreach ($amazingproducts as $item)
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                            <div class="badge badge-success float-right mt-1">{{$item->amazing_percent}}&nbsp;تخفیف</div>
+                            <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
+                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                            <del>{{ $item->price }}</del>
+                            <h5 class="text-success font-weight-normal mb-0">{{ $item->amazing_price }}</h5>
+                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->warranty_date}}<br>{{$item->warranty_name}}</p>
+                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
                         </div>
                     </div>
                 </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="container">
+            <h6 class="subtitle">محصولات جدید <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <div class="row">
+                @foreach ($lastproducts as $index => $item)
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                            <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
+                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                            
+                            <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
+                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
+                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="container-fluid bg-discount-product text-dark my-3">
+            <h1 class="subtitle text-white">تخفیف های امروز <a href="all-products.html" class="float-right small">مشاهده همه</a></h1>
+            <div class="row">
+                @foreach ($discountproducts as $item)
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                            <div class="badge badge-primary float-right mt-1">{{$item->discount_percent}}&nbsp;تخفیف</div>
+                            <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
+                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                            <del>{{ $item->price }}</del>
+                            <h5 class="text-success font-weight-normal mb-0">{{ $item->discount_price }}</h5>
+                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->warranty_date}}<br>{{$item->warranty_name}}</p>
+                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
         <div class="container mb-3">
@@ -287,5 +137,65 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="container">
+            <h6 class="subtitle">لپ تاپ <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <div class="row">
+                @foreach ($laptopproducts as $index => $item)
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                            <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
+                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                            
+                            <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
+                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
+                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="container">
+            <h6 class="subtitle">گوشی موبایل <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <div class="row">
+                @foreach ($mobileproducts as $index => $item)
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                            <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
+                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                            
+                            <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
+                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
+                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="container">
+            <h6 class="subtitle">مودم ADSL <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <div class="row">
+                @foreach ($modemproducts as $index => $item)
+                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
+                            <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
+                            <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                            
+                            <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
+                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
+                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>

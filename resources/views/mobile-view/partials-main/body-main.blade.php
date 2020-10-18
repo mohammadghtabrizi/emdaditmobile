@@ -37,7 +37,7 @@
     <!-- jquery, popper and bootstrap js -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
-     <script src="vendor/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap-4.3.1/js/bootstrap.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
 
     <!-- swiper js -->
@@ -50,12 +50,11 @@
     <script>
         $(window).on('load', function() {
             /* swiper slider carousel */
-            var swiper = new Swiper('.small-slide', {
+            var swipersmall = new Swiper('.small-slide', {
                 slidesPerView: 'auto',
                 spaceBetween: 0,
             });
-
-            var swiper = new Swiper('.news-slide', {
+            var swipernews = new Swiper('.news-slide', {
                 slidesPerView: 5,
                 spaceBetween: 0,
                 pagination: {
@@ -80,6 +79,7 @@
                     }
                 }
             });
+            
 
             /* notification view and hide */
             setTimeout(function() {
@@ -91,6 +91,22 @@
             $('.closenotification').on('click', function() {
                 $(this).closest('.notification').removeClass('active')
             });
+        });
+
+    </script>
+    <script>
+        var swiper = new Swiper('.swiper-index-slider', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
 
     </script>

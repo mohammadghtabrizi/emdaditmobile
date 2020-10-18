@@ -13,7 +13,7 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="cart.html" class="btn btn-default shadow centerbutton">
+                            <a href="cart.html" class="btn btn-link-default">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
@@ -23,7 +23,7 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="index.html" class="btn btn-link-default active">
+                            <a href="index.html" class="btn btn-default shadow centerbutton">
                                 <i class="material-icons">store_mall_directory</i>
                             </a>
                         </div>

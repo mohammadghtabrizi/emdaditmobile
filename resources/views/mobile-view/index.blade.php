@@ -9,7 +9,7 @@
         @include('mobile-view.partials-main.footer')
     </div>
     <!-- notification -->
-    @include('mobile-view.partials-main.notification-loading')
+    @include('mobile-view.partials-main.notification-fullscreen')
     <!-- notification ends -->
     
 @stop

@@ -56,6 +56,9 @@ body {
     background-color: #C0E9DB !important
 }
 
+
+
+
 .bg-warning,
 .badge-warning {
     background-color: #FFC400 !important
@@ -2163,4 +2166,26 @@ pre {
 ::-webkit-scrollbar-track {
     border-radius: 5px;
     background: rgba(230, 230, 230, 0.4);
+}
+
+
+
+
+/* me css code */
+
+
+/* .card:hover{
+    background-color: #7aa5fc;
+    color: #ced4da;
+} */
+
+
+.bg-amazing-product{
+    background-color: #ef394e;
+    border-radius: 5px;
+}
+
+.bg-discount-product{
+    background-color: #6bb927;
+    border-radius: 5px;
 }
