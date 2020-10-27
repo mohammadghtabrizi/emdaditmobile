@@ -1,5 +1,4 @@
         <div class="container">
-            <input type="text" class="form-control form-control-lg search my-3" placeholder="جستجو کردن">
             <div data-pagination='{"el": ".swiper-pagination"}' data-loop="true" class="swiper-index-slider swiper-init demo-swiper">
                 <div class="swiper-pagination"></div>
                 <div class="swiper-wrapper">
@@ -24,7 +23,7 @@
                             <img src="{{asset('img/products/categories')}}/{{ $productcategoryparent->image_source }}" alt="" class="small-slide-right">
                             <h5 class="mb-1" style="padding-top:15px;">{{$productcategoryparent->name}}</h5>
                             <br>
-                            <button class="btn btn-outline-primary btn-sm">نمایش</button>
+                            <a class href="{{route('show_category_product',['id' => $productcategoryparent->id,'slug' => $productcategoryparent->slug])}}"><button class="btn btn-outline-primary btn-sm">نمایش</button></a>
                         </div>
                     </div>
                 </div>
@@ -39,13 +38,13 @@
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="card-body">
                             <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                            <div class="badge badge-success float-right mt-1">{{$item->amazing_percent}}&nbsp;تخفیف</div>
+                            <div class="badge badge-danger float-right mt-1">{{$item->amazing_percent}}&nbsp;تخفیف</div>
                             <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
                             <del>{{ $item->price }}</del>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->amazing_price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->warranty_date}}<br>{{$item->warranty_name}}</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                            <a href="{{route('show_detail_product',['id' => $item->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -56,16 +55,15 @@
             <h6 class="subtitle">محصولات جدید <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($lastproducts as $index => $item)
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="card-body">
                             <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
                             <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
-                            
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
-                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                            <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>           
+                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +84,7 @@
                             <del>{{ $item->price }}</del>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->discount_price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->warranty_date}}<br>{{$item->warranty_name}}</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                            <a href="{{route('show_detail_product',['id' => $item->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -143,16 +141,15 @@
             <h6 class="subtitle">لپ تاپ <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($laptopproducts as $index => $item)
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="card-body">
                             <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
                             <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
-                            
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -163,16 +160,15 @@
             <h6 class="subtitle">گوشی موبایل <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($mobileproducts as $index => $item)
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="card-body">
                             <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
                             <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
-                            
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -183,16 +179,15 @@
             <h6 class="subtitle">مودم ADSL <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($modemproducts as $index => $item)
-                <div class="col-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="col-6 col-md-4 col-lg-3 col-xl-3">
                     <div class="card shadow-sm border-0 mb-4">
                         <div class="card-body">
                             <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
                             <figure class="product-image"><img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="" class=""></figure>
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
-                            
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
-                            <button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button>
+                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>

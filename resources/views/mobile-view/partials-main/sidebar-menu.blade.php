@@ -1,7 +1,7 @@
     <div class="sidebar">
         <div class="text-center">
             <div class="figure-menu shadow">
-                <figure><img src="img/user1.png" alt=""></figure>
+                <figure><img src="{{asset('img/user1.png')}}" alt=""></figure>
             </div>
             <h5 class="mb-1 ">امی جانسون</h5>
             <p class="text-mute small">ایران , تهران</p>

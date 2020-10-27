@@ -3,7 +3,7 @@
                 <div class="col-auto mx-auto">
                      <div class="row no-gutters justify-content-center">
                         <div class="col-auto">
-                            <a href="profile.html" class="btn btn-link-default">
+                            <a href="" class="btn btn-link-default">
                                 <i class="material-icons">account_circle</i>
                             </a>
                         </div>
@@ -13,7 +13,7 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="cart.html" class="btn btn-link-default">
+                            <a href="cart.html" class="btn btn-link-default @if($activeMenu == 'shop') shadow centerbutton @endif">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
@@ -23,7 +23,7 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="index.html" class="btn btn-default shadow centerbutton">
+                            <a href="{{route('index')}}" class="btn btn-default @if($activeMenu == 'home') shadow centerbutton @endif">
                                 <i class="material-icons">store_mall_directory</i>
                             </a>
                         </div>
