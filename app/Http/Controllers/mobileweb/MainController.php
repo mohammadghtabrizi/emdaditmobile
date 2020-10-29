@@ -43,28 +43,29 @@ class MainController extends Controller
 
         
         $amazingproducts = ProductPrices::join('products','product_prices.price_pro_id','=','products.id')
-        ->join('product_images','product_prices.price_pro_id','=','product_images.pro_id')
-        ->select('product_prices.id as price_id','product_prices.price','product_prices.amazing_status','product_prices.amazing_price','product_prices.amazing_percent','product_prices.warranty_name','product_prices.warranty_date','products.id','products.name','products.slug','product_images.image_source','image_index')
-        ->where('product_prices.amazing_status','=','1')
-        ->where('product_images.image_index','=','1')
-        ->take(6)
-        ->get();
+            ->join('product_images','product_prices.price_pro_id','=','product_images.pro_id')
+            ->select('product_prices.id as price_id','product_prices.price','product_prices.amazing_status','product_prices.amazing_price','product_prices.amazing_percent','product_prices.warranty_name','product_prices.warranty_date','products.id','products.name','products.slug','product_images.image_source','image_index')
+            ->where('product_prices.amazing_status','=','1')
+            ->where('product_images.image_index','=','1')
+            ->take(6)
+            ->get();
 
         $discountproducts = ProductPrices::join('products','product_prices.price_pro_id','=','products.id')
-        ->join('product_images','product_prices.price_pro_id','=','product_images.pro_id')
-        ->select('product_prices.id as price_id','product_prices.price','product_prices.discount_status','product_prices.discount_price','product_prices.discount_percent','product_prices.warranty_name','product_prices.warranty_date','products.id','products.name','product_images.image_source','image_index')
-        ->where('product_prices.discount_status','=','1')
-        ->where('product_images.image_index','=','1')
-        ->take(6)
-        ->get();
+            ->join('product_images','product_prices.price_pro_id','=','product_images.pro_id')
+            ->select('product_prices.id as price_id','product_prices.price','product_prices.discount_status','product_prices.discount_price','product_prices.discount_percent','product_prices.warranty_name','product_prices.warranty_date','products.id','products.name','product_images.image_source','image_index')
+            ->where('product_prices.discount_status','=','1')
+            ->where('product_images.image_index','=','1')
+            ->take(6)
+            ->get();
 
         $laptopproducts = Products::join('product_images','products.id','=','product_images.pro_id')
-        ->where('product_images.image_index','=','1')
-        ->where('products.cat_id','=','9')
-        ->select('product_images.image_source','products.id','products.name','products.slug')
-        ->orderBy('products.created_at','desc')
-        ->take(8)
-        ->get();
+            ->join('product_category','products.cat_id','=','product_category.id')
+            ->where('product_images.image_index','=','1')
+            ->where('products.cat_id','=','9')
+            ->select('product_images.image_source','products.id','products.name','products.slug','product_category.id as category_id')
+            ->orderBy('products.created_at','desc')
+            ->take(8)
+            ->get();
         
         foreach ($laptopproducts as $index => $item){
     
@@ -77,9 +78,10 @@ class MainController extends Controller
         }
 
         $mobileproducts = Products::join('product_images','products.id','=','product_images.pro_id')
+            ->join('product_category','products.cat_id','=','product_category.id')
             ->where('product_images.image_index','=','1')
             ->where('products.cat_id','=','10')
-            ->select('product_images.image_source','products.id','products.name','products.slug')
+            ->select('product_images.image_source','products.id','products.name','products.slug','product_category.id as category_id')
             ->orderBy('products.created_at','desc')
             ->take(8)
             ->get();
@@ -95,9 +97,10 @@ class MainController extends Controller
         }
 
         $modemproducts = Products::join('product_images','products.id','=','product_images.pro_id')
+            ->join('product_category','products.cat_id','=','product_category.id')
             ->where('product_images.image_index','=','1')
             ->where('products.cat_id','=','11')
-            ->select('product_images.image_source','products.id','products.name','products.slug')
+            ->select('product_images.image_source','products.id','products.name','products.slug','product_category.id as category_id')
             ->orderBy('products.created_at','desc')
             ->take(8)
             ->get();

@@ -13,7 +13,7 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="cart.html" class="btn btn-link-default @if($activeMenu == 'shop') shadow centerbutton @endif">
+                            <a href="cart.html" class="btn @if($activeMenu == 'shop') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
@@ -23,10 +23,11 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="{{route('index')}}" class="btn btn-default @if($activeMenu == 'home') shadow centerbutton @endif">
+                            <a href="{{route('index')}}" class="btn @if($activeMenu == 'home') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
                                 <i class="material-icons">store_mall_directory</i>
                             </a>
                         </div>
+                        
                     </div>
                 </div>
             </div>

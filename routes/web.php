@@ -23,8 +23,11 @@ Route::group(['prefix' => 'products'],function(){
 
 	Route::get('/category/{id}/{slug?}','App\Http\Controllers\mobileweb\product\users\ProductMainController@showcategoryproduct')->name('show_category_product');
 
-	Route::get('/{id}/{slug?}','App\Http\Controllers\mobileweb\product\users\ProductMainController@showdetailproduct')->name('show_detail_product');
+	Route::get('/subcategory/{id}/{slug?}','App\Http\Controllers\mobileweb\product\users\ProductMainController@showsubcategoryproduct')->name('show_sub_category_product');
 
+	Route::get('/search','App\Http\Controllers\mobileweb\product\users\ProductMainController@searchproduct')->name('search_product');
+
+	Route::get('/detail/{id}/{slug?}','App\Http\Controllers\mobileweb\product\users\ProductMainController@showdetailproduct')->name('show_detail_product');
 
 
 });

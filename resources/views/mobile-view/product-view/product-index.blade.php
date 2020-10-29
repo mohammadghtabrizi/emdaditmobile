@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="container">
-            <h6 class="subtitle">محصولات جدید <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <h6 class="subtitle">محصولات جدید <a href="#" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($lastproducts as $index => $item)
                 <div class="col-6 col-md-4 col-lg-3 col-xl-3">
@@ -138,7 +138,7 @@
             </div>
         </div>
         <div class="container">
-            <h6 class="subtitle">لپ تاپ <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <h6 class="subtitle">لپ تاپ <a href="{{route('show_sub_category_product',['id' => $laptopproducts->first()->category_id,'slug' => $item->category_slug])}}" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($laptopproducts as $index => $item)
                 <div class="col-6 col-md-4 col-lg-3 col-xl-3">
@@ -157,7 +157,7 @@
             </div>
         </div>
         <div class="container">
-            <h6 class="subtitle">گوشی موبایل <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <h6 class="subtitle">گوشی موبایل <a href="{{route('show_sub_category_product',['id' => $mobileproducts->first()->category_id,'slug' => $item->category_slug])}}" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($mobileproducts as $index => $item)
                 <div class="col-6 col-md-4 col-lg-3 col-xl-3">
@@ -176,7 +176,7 @@
             </div>
         </div>
         <div class="container">
-            <h6 class="subtitle">مودم ADSL <a href="all-products.html" class="float-right small">مشاهده همه</a></h6>
+            <h6 class="subtitle">مودم ADSL <a href="{{route('show_sub_category_product',['id' => $modemproducts->first()->category_id,'slug' => $item->category_slug])}}" class="float-right small">مشاهده همه</a></h6>
             <div class="row">
                 @foreach ($modemproducts as $index => $item)
                 <div class="col-6 col-md-4 col-lg-3 col-xl-3">

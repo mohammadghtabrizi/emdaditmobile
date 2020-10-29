@@ -11,9 +11,11 @@
         </div>
         <div class="container">
             <div class="input-group mb-3" style="padding-top:20px;">
-                <input type="text" class="form-control" placeholder="دنبال چه میگردید">
-                <div class="input-group-append">
-                    <input type="submit" class="btn btn-outline-secondary" placeholder="" value="جستجو">
-                </div>
+                <form class="input-group form-group" method="get" action="{{route('search_product')}}">
+                    <input type="search" class="form-control" name="searchproduct" placeholder="دنبال چه میگردید">
+                    <div class="input-group-append">
+                        <input type="submit" class="btn btn-outline-secondary" placeholder="" value="جستجو">
+                    </div>
+                </form>
             </div>
         </div>

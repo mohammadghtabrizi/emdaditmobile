@@ -5,21 +5,9 @@
     <div class="wrapper">
         @include('mobile-view.partials-main.top-main-menu')
         <div class="container">
-            <nav aria-label="خرده نان">
-                <ol class="breadcrumb bg-primary">
-                    <li class="breadcrumb-item">
-                        <a href="#" class="text-white">خانه</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="#">کتابخانه</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">داده ها</li>
-                </ol>
-            </nav>
             <!-- Swiper -->
             <div class="swiper-container product-details">
                 <div class="swiper-wrapper">
-                    
                     @foreach($image as $item)
                     <div class="swiper-slide">
                         <img src="{{asset('img/products/images')}}/{{( $item->image_source )}}" alt="">
@@ -61,6 +49,9 @@
                     @if($prices->discount_status === 1)
                     <h3 class="text-danger font-weight-normal mb-0">{{$prices->discount_price}}</h3>
                     @endif
+                    @if($prices->amazing_status === 0 && $prices->discount_status ===0)
+                    <h3 class="text-danger font-weight-normal mb-0">{{$prices->price}}</h3>
+                    @endif
                     <p class="text-discount text-mute mb-0">گارانتی  {{$prices->warranty_date}}  {{$prices->warranty_name}}</p>
                 </div>
                 <div class="col-auto align-self-center">
@@ -68,8 +59,10 @@
                 </div>
             </div>
             <!-- detailprooooo -->
-            @if($prices->amazing_status === 0 AND $prices->discount_status === 0)
+            @if($moreprice <> '')
             <div class="row">
+                @foreach($moreprice as $item)
+                @if($price->first()->id <> $item->id)
                 <div class="col-12">
                     <div class="card shadow-sm border-0 mb-3">
                         <div class="card-body p-3">
@@ -78,15 +71,20 @@
                                     <i class="material-icons h1 mb-0 mr-3">account_balance</i>
                                 </div>
                                 <div class="col 8 align-self-center" style="text-align:center;">
-                                    <p class="text-discount mb-0 text-mute">Document.pdf</p>
+                                    <p class=" mb-0 ">گارانتی {{$item->warranty_date}} {{$item->warranty_name}}</p>
                                 </div>
-                                <button class="btn btn-outline-primary align-self-center">
+                                <div class="col 8 align-self-center" style="text-align:center;">
+                                    <p class="text-discount mb-0 text-mute">{{$item->price}}</p>
+                                </div>
+                                <a class="btn btn-outline-primary align-self-center" href="{{route('show_detail_product',['id' => $item->id,'slug' => $item->slug])}}">
                                     مشاهده
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
+                @endforeach
             </div>
             @endif
             <div class="row">
@@ -107,23 +105,23 @@
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                @foreach($propertykeyparents as $propertykeyparent)
+                                @foreach($property as $index => $item)
                                 
                                 <div class="tab-pane active" role="tabpanel" id="technical-specification" style="padding:10px;">
-                                    <button type="button" class="shadow-sm mr-2 btn btn-link text-light text-dark mb-2"><i class="material-icons">add_box</i>{{$propertykeyparent->name}}</button>
-                                    @foreach($property as $item)
-                                    @if($item->key_parent === $propertykeyparent->id)
+                                    <button type="button" class="shadow-sm mr-2 btn btn-link text-light text-dark mb-2"><i class="material-icons">add_box</i>{{$item->name}}</button>
+                                    @foreach($item->property as $prop)
+                                    
                                     <div class="row">
                                         <div class="col-4" style="padding:5px;">
-                                            <p class="mb-0 text-black f-sm" style="background-color: #eff4fd;padding: 7px;">{{$item->name}}</p>
+                                            <p class="mb-0 text-black f-sm" style="background-color: #eff4fd;padding: 7px;">{{$prop->name}}</p>
                                         </div>
                                         <div class="col-8" style="padding:5px;">
-                                            <p class="mb-0 text-black f-sm" style="background-color: #fdefef;padding: 7px;">{{$item->value}}</p>
+                                            <p class="mb-0 text-black f-sm" style="background-color: #fdefef;padding: 7px;">{{$prop->value}}</p>
                                         </div>
                                     </div>
-                                    @endif
                                     @endforeach
                                 </div>
+                                
                                 @endforeach
                                 <div class="clearfix"></div>
                             </div>
