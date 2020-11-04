@@ -16,8 +16,8 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
@@ -32,11 +32,13 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
+        'a4ecaeafb8cfb009ad0e052c90355e98' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/functions.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        'e4e590a9b5afe940db71ee1662c02677' => __DIR__ . '/..' . '/morilog/jalali/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -120,6 +122,7 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         ),
         'M' => 
         array (
+            'Morilog\\Jalali\\' => 15,
             'Monolog\\' => 8,
         ),
         'L' => 
@@ -175,6 +178,7 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         ),
         'A' => 
         array (
+            'Assert\\' => 7,
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
         ),
@@ -375,6 +379,10 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
+        'Morilog\\Jalali\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/morilog/jalali/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -488,6 +496,10 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'Assert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beberlei/assert/lib/Assert',
+        ),
         'Asm89\\Stack\\' => 
         array (
             0 => __DIR__ . '/..' . '/asm89/stack-cors/src',
@@ -520,13 +532,16 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
     );
 
     public static $classMap = array (
-        'App\\BlogCategory' => __DIR__ . '/../..' . '/app/Models/BlogCategory.php',
-        'App\\BlogComment' => __DIR__ . '/../..' . '/app/Models/BlogComment.php',
-        'App\\BlogFile' => __DIR__ . '/../..' . '/app/Models/BlogFile.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Auth\\LogoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/LogoutController.php',
+        'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\mobileweb\\Auth\\Dashboard\\MainDashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/Dashboard/MainDashboardController.php',
+        'App\\Http\\Controllers\\mobileweb\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/LoginController.php',
         'App\\Http\\Controllers\\mobileweb\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/MainController.php',
+        'App\\Http\\Controllers\\mobileweb\\blog\\users\\BlogMainController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/blog/users/BlogMainController.php',
+        'App\\Http\\Controllers\\mobileweb\\product\\users\\ProductMainController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/product/users/ProductMainController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -535,11 +550,19 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
+        'App\\Http\\Middleware\\UserIsAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/UserIsAuth.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\BlogCategory' => __DIR__ . '/../..' . '/app/Models/BlogCategory.php',
+        'App\\Models\\BlogComment' => __DIR__ . '/../..' . '/app/Models/BlogComment.php',
+        'App\\Models\\BlogFile' => __DIR__ . '/../..' . '/app/Models/BlogFile.php',
         'App\\Models\\BlogPost' => __DIR__ . '/../..' . '/app/Models/BlogPost.php',
+        'App\\Models\\ProductBrands' => __DIR__ . '/../..' . '/app/Models/ProductBrands.php',
         'App\\Models\\ProductCategory' => __DIR__ . '/../..' . '/app/Models/ProductCategory.php',
+        'App\\Models\\ProductColors' => __DIR__ . '/../..' . '/app/Models/ProductColors.php',
         'App\\Models\\ProductImages' => __DIR__ . '/../..' . '/app/Models/ProductImages.php',
         'App\\Models\\ProductPrices' => __DIR__ . '/../..' . '/app/Models/ProductPrices.php',
+        'App\\Models\\ProductPropertyKey' => __DIR__ . '/../..' . '/app/Models/ProductPropertyKey.php',
+        'App\\Models\\ProductPropertyValue' => __DIR__ . '/../..' . '/app/Models/ProductPropertyValue.php',
         'App\\Models\\Products' => __DIR__ . '/../..' . '/app/Models/Products.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -550,6 +573,13 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
+        'Assert\\Assert' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/Assert.php',
+        'Assert\\Assertion' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/Assertion.php',
+        'Assert\\AssertionChain' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/AssertionChain.php',
+        'Assert\\AssertionFailedException' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/AssertionFailedException.php',
+        'Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/InvalidArgumentException.php',
+        'Assert\\LazyAssertion' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/LazyAssertion.php',
+        'Assert\\LazyAssertionException' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/LazyAssertionException.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
@@ -2964,6 +2994,8 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'Morilog\\Jalali\\CalendarUtils' => __DIR__ . '/..' . '/morilog/jalali/src/CalendarUtils.php',
+        'Morilog\\Jalali\\Jalalian' => __DIR__ . '/..' . '/morilog/jalali/src/Jalalian.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\Commands\\TestCommand' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/Commands/TestCommand.php',

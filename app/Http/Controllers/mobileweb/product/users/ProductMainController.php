@@ -13,10 +13,13 @@ use App\Models\ProductBrands;
 use App\Models\ProductColors;
 use App\Models\ProductPropertyKey;
 use App\Models\ProductPropertyValue;
+use App\Models\ProductCart;
 
 use App\Models\BlogPost;
 
 use Cache;
+
+use Auth;
 
 class ProductMainController extends Controller
 {
@@ -292,6 +295,87 @@ class ProductMainController extends Controller
             'products' => $products->appends($request->except('page'))
 
         ]);
+    } 
+
+    public function addtocart(Request $request,$id,$slug=''){
+
+        
+        $find = ProductPrices::where('product_prices.id','=',$id)
+        ->first();
+       
+        
+        if(is_null($find)){
+
+            $message['message'] = 'محصول مورد نظر شما یافت نشد';
+
+            $message['class'] = '-danger';
+
+            return redirect()->back()->with('message',$message);
+        }
+
+        $duplicatecart = ProductCart::where('product_cart.pc_price_id','=',$find->id)
+        ->first();
+
+        if(!is_null($duplicatecart)){
+
+
+            $message['message'] = 'این محصول در سبد خرید شما وجود دارد';
+
+            $message['class'] = '-danger';
+
+            return redirect()->back()->with('message',$message);
+        }
+        
+
+        $addcart = new ProductCart();
+        
+        $addcart->pc_user_id = Auth::user()->id;
+
+        $addcart->pc_price_id = $find->id;
+
+        $addcart->pc_product_id = $find->price_pro_id;
+
+        $addcart->pc_price = $find->price;
+
+        $addcart->pc_warranty_name = $find->warranty_name;
+
+        $addcart->pc_warranty_date = $find->warranty_date;
+
+        if($find->discount_status === 1){
+
+            $addcart->pc_discount_status = $find->discount_status;
+
+            $addcart->pc_discount_price = $find->discount_price;
+
+            $addcart->pc_discount_percent = $find->discount_percent;
+        }
+        else if($find->amazing_status === 1){
+
+            $addcart->pc_discount_status = $find->amazing_status;
+
+            $addcart->pc_discount_price = $find->amazing_price;
+
+            $addcart->pc_discount_percent = $find->amazing_percent;
+        }
+
+        $saved = $addcart->save();
+
+        if(!$saved){
+
+            $message['message'] = 'متاسفانه محصول مورد نظر به سبد خرید اضافه نشد';
+
+            $message['class'] = '-danger';
+
+            return redirect()->back()->with('message',$message);
+        
+        }
+
+        $message['message'] = 'محصول مورد نظر به سبد خرید اضافه شد';
+
+        $message['class'] = '-primary';
+
+        return redirect()->back()->with('message',$message);
+        
     }
 }
     

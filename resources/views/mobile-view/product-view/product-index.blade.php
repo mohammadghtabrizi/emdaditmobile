@@ -44,7 +44,7 @@
                             <del>{{ $item->price }}</del>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->amazing_price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->warranty_date}}<br>{{$item->warranty_name}}</p>
-                            <a href="{{route('show_detail_product',['id' => $item->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $item->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>           
-                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             <del>{{ $item->price }}</del>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->discount_price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->warranty_date}}<br>{{$item->warranty_name}}</p>
-                            <a href="{{route('show_detail_product',['id' => $item->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $item->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
-                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
-                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                             <a href="product-details.html" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
                             <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->price }}</h5>
                             <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
-                            <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $item->price->first()->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>

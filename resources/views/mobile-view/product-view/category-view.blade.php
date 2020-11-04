@@ -58,7 +58,7 @@
                                     <p class="text-discount small text-mute mb-0">گارانتی {{$prices[$products->product_id][$products->product_id]['prices']->warranty_date}}<br>{{$prices[$products->product_id][$products->product_id]['prices']->warranty_name}}</p>
                                 </div>
                             </div>
-                            <a href="{{route('show_detail_product',['id' => $prices[$products->product_id][$products->product_id]['prices']->id,'slug' => $prices[$products->product_id][$products->product_id]['prices']->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $prices[$products->product_id][$products->product_id]['prices']->id,'slug' => $prices[$products->product_id][$products->product_id]['prices']->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>

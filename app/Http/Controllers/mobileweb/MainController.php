@@ -14,6 +14,45 @@ use App\Models\BlogPost;
 
 class MainController extends Controller
 {
+    protected $services = [
+
+        1 => 'تعمیر پرینتر ، اسکتر ، کپی ، پلاتر',
+
+        2 => 'شارژ کارتریج',
+
+        3 => 'تعمیر کامپیوتر',
+
+        4 => 'تعمیر لپ تاپ',
+
+        5 => 'نصب و راه اندازی کامپیوتر و لپتاپ',
+
+        6 => 'نصب و راه اندازی ماشین های اداری',
+
+        7 => 'رفع ایرادنرم افزاری',
+
+        8 => 'ویروس یابی'
+
+    ];
+	
+	protected $citys = [
+		
+		1 => 'تهران',
+		
+		2 => 'تبریز'
+		
+		
+	];
+	
+	
+	protected $times = [
+		
+		1 => 'ساعت 9 الی 12',
+		
+		2 => 'ساغت 12 الی 16',
+		
+		3 => 'ساعت 16 الی19'
+		
+	];
     public function index(){
 
         $activeMenu = 'home';
@@ -125,10 +164,6 @@ class MainController extends Controller
             ->get();
 
         
-    
-
-        
-        
         return view('/mobile-view/index')->with([
 
             'productcategoryparents'=> $productcategoryparents,
@@ -152,6 +187,33 @@ class MainController extends Controller
             'headertitle' => $headertitle,
 
             'activeMenu' => $activeMenu
+
+        ]);
+    }
+
+    public function expertrequest(){
+
+        
+
+        $activeMenu = 'register';
+
+        $now = \Carbon\Carbon::now();
+
+        $result = [];
+
+        for($i = 1;$i<=3;$i++){
+
+            $result[] = \Morilog\Jalali\Jalalian::fromCarbon(\Carbon\Carbon::now()->addDays($i))->format("%Y-%m-%d");
+
+        }
+
+    	return view ('\mobile-view\request\request')->with([
+
+            'activeMenu' => $activeMenu,
+
+            'dates' => $result,
+
+            'services' => $this->services
 
         ]);
     }

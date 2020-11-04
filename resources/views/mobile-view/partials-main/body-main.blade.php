@@ -1,7 +1,5 @@
 <!doctype html>
 <html lang="en" class="blue-theme">
-
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
@@ -25,7 +23,6 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
-
 <body>
     
 
@@ -86,7 +83,7 @@
                 $('.notification').addClass('active');
                 setTimeout(function() {
                     $('.notification').removeClass('active');
-                }, 3500);
+                }, 8000);
             }, 500);
             $('.closenotification').on('click', function() {
                 $(this).closest('.notification').removeClass('active')

@@ -5,7 +5,7 @@
                 </div>
                 <div class="col text-center"><img src="{{asset('img/emdaditlogologin.png')}}" alt="" class="header-logo"></div>
                 <div class="col-auto">
-                    <a href="profile.html" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
+                    <a href="{{route('dashboard_users')}}" class="btn  btn-link text-dark"><i class="material-icons">account_circle</i></a>
                 </div>
             </div>
         </div>

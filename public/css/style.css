@@ -526,7 +526,7 @@ select.form-control optgroup {
 
 .float-label .form-control:focus + .form-control-label,
 .float-label.active label {
-    top: 0;
+    top: -7px;
     font-size: 13px;
     line-height: 20px;
 }

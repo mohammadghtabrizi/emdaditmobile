@@ -3,22 +3,22 @@
                 <div class="col-auto mx-auto">
                      <div class="row no-gutters justify-content-center">
                         <div class="col-auto">
-                            <a href="" class="btn btn-link-default">
-                                <i class="material-icons">account_circle</i>
+                            <a href="{{route('dashboard_users')}}" class="btn @if($activeMenu == 'myprofile') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
+                                <i class="material-icons">account_circle</i>myprofile
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="favorite-products.html" class="btn btn-link-default">
+                            <a href="#" class="btn btn-link-default">
                                 <i class="material-icons">favorite</i>
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="cart.html" class="btn @if($activeMenu == 'shop') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
+                            <a href="#" class="btn @if($activeMenu == 'shop') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="statistics.html" class="btn btn-link-default">
+                            <a href="#" class="btn btn-link-default">
                                 <i class="material-icons">insert_chart_outline </i>
                             </a>
                         </div>

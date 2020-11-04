@@ -55,7 +55,7 @@
                     <p class="text-discount text-mute mb-0">گارانتی  {{$prices->warranty_date}}  {{$prices->warranty_name}}</p>
                 </div>
                 <div class="col-auto align-self-center">
-                    <button class="btn btn-lg btn-default shadow btn-rounded"> <i class="material-icons md-18">shopping_cart</i> افزودن به سبد خرید </button>
+                <a href="{{route('add_to_cart',['id' => $item->price->first()->price_id,'slug' => $item->price->first()->slug])}}"><button class="btn btn-lg btn-default shadow btn-rounded"> <i class="material-icons md-18">shopping_cart</i> افزودن به سبد خرید </button>
                 </div>
             </div>
             <!-- detailprooooo -->
@@ -108,7 +108,7 @@
                                 @foreach($property as $index => $item)
                                 
                                 <div class="tab-pane active" role="tabpanel" id="technical-specification" style="padding:10px;">
-                                    <button type="button" class="shadow-sm mr-2 btn btn-link text-light text-dark mb-2"><i class="material-icons">add_box</i>{{$item->name}}</button>
+                                    <button type="button" class="shadow-sm mr-2 btn btn-link text-light text-dark mb-2"><i class="material-icons">add_box</i>{{$item->name}}</button></a>
                                     @foreach($item->property as $prop)
                                     
                                     <div class="row">
