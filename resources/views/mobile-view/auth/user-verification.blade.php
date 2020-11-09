@@ -48,15 +48,15 @@
             @csrf
             <img src="{{asset('img/emdaditlogo.png')}}" alt="لوگو امداد آی تی" class="logo-small">
             <h5 class="text-dark " style="padding:20px;"> EmdadIT</h5>
-            <p class="text-dark" style="text-align:right;"> ورود / ثبت نام</p>
-            <p class="text-dark " style="text-align:right;"> شماره همراه خود را وارد نمایید</p>
+            <h5 class="text-dark" style="text-align:right;"> کد تاییدیه ارسال شده را وارد نمایید</h5>
+            <p class="text-dark " style="text-align:right;"> کد تایید به شماره {{$mobile}} ارسال شده است .</p>
                 <div class="form-group float-label">
                     <input id="inputEmail" class="form-control" type="mobile" name="mobile" required="" autofocus="">
-                    <label for="inputEmail" class="form-control-label">شماره همراه</label>
+                    <label for="inputEmail" class="form-control-label">کد تایید</label>
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-lg btn-default btn-rounded shadow"><span>ارسال </span><i class="material-icons">arrow_back</i></button>
+                        <button type="submit" class="btn btn-lg btn-default btn-rounded shadow"><span>تایید </span><i class="material-icons">arrow_back</i></button>
                     </div>
                 </div>
             </form>

@@ -9,9 +9,13 @@ use App\Models\ProductCategory;
 use App\Models\Products;
 use App\Models\ProductImages;
 use App\Models\ProductPrices;
+use App\Models\MeRequest;
 
 use App\Models\BlogPost;
 
+use Validator;
+
+use Auth;
 class MainController extends Controller
 {
     
@@ -181,6 +185,10 @@ class MainController extends Controller
 
             'services' => $this->services,
 
+            'citys' => $this->citys,
+
+            'times' => $this->times,
+
             'metadescription' => $metadescription,
 
             'headertitle' => $headertitle
@@ -193,30 +201,28 @@ class MainController extends Controller
 
         $roles = [
 
-            'name' => 'string|min:3',
+            // 'name' => 'required|string|min:3',
 
-            'mobile' => 'numeric',
+            // 'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
 
-            'lastname' => 'string|min:5',
+            // 'lastname' => 'required|string|min:5',
 
-            'mobile' => 'numeric|min:11',
-
-            'typerequest' => 'in:' . implode(',', array_keys($this->services)),
+            'typerequest' => 'required|in:' . implode(',', array_keys($this->services)),
 			
-			'city' => 'in:' . implode(',', array_keys($this->citys)),
+			'city' => 'required|in:' . implode(',', array_keys($this->citys)),
 			
-			'time' => 'in:' . implode(',', array_keys($this->times))
+			'time' => 'required|in:' . implode(',', array_keys($this->times))
 			
 
         ];
 
         $attributes = [
 
-            'name' => 'نام',
+            // 'name' => 'نام',
 
-            'lastname' => 'نام خانوادگی',
+            // 'lastname' => 'نام خانوادگی',
 
-            'mobile' => 'موبایل',
+            // 'mobile' => 'موبایل',
 
             'typerequest' => 'نوع درخواست',
 			
@@ -235,26 +241,38 @@ class MainController extends Controller
         ];
 
         $validate = Validator::make($request->all(),$roles,$messages,$attributes);
+
+        
         
         if($validate->fails()){
 
+
             $message['message'] = 'مشکلی در ثبت اطلاعات شما به وجود آمده لطفا خطاهای زیر را بررسی و دوباره امتحان نمایید .';
 
-            $message['class'] = 'alert-warning';
+            $message['class'] = '-danger';
 
             return redirect()->back()->withErrors($validate)->with('message',$message);
         }
 
+        $checkrequestuser = MeRequest::where('me_request.userid','=',Auth::user()->id)
+        ->where('me_request.status','=',0)
+        ->count();
+
+        if($checkrequestuser > 3){
+
+            $message['message'] = 'کاربر عزیز شما بیشتر از 3 درخواست درحال پیگیری نمی توانید داشته باشید .';
+
+            $message['class'] = '-danger';
+
+            return redirect()->back()->with('message',$message);
+
+        }
 
         $r = new MeRequest();
 			
 		if(!Auth::check()){
 
-            $r->name = $request->get('name');
-
-            $r->lastname = $request->get('lastname');
-
-            $r->mobile = $request->get('mobile');
+            return route('login_front_end_user_view');
 
 
         }
@@ -268,143 +286,68 @@ class MainController extends Controller
 
 
         }
+        $r->typerequest = $request->get('typerequest');
 
-        $checkregisterlicense = MeRequest::select('me_request.id')
-            ->where('me_request.mobile','=',$r->mobile)
-            ->where('me_request.status','=','pending')
-            ->count();
-        if($checkregisterlicense <= 3){
+        $r->city = $request->get('city');
 
-        	$r->typerequest = $request->get('typerequest');
+        $daterequest = $request->get('date');
 
-            $r->city = $request->get('city');
+        $r->timerequest = $request->get('time');
 
-            $daterequest = $request->get('date');
+        $r->address = $request->get('address');  
 
-            $r->timerequest = $request->get('time');
+        $r->status = 0;
 
-            $r->address = $request->get('address');  
+        $now = \Carbon\Carbon::now();
 
-            $r->status = 0;
+        $result = [];
 
-            $now = \Carbon\Carbon::now();
+        for($i = 1;$i<=3;$i++){
 
-            $result = [];
+            $result[] = \Morilog\Jalali\Jalalian::fromCarbon(\Carbon\Carbon::now()->addDays($i))->tostring();
 
-            for($i = 1;$i<=3;$i++){
+        }
 
-                $result[] = \Morilog\Jalali\Jalalian::fromCarbon(\Carbon\Carbon::now()->addDays($i))->tostring();
-
-            }
-
-            $r->daterequest = $result[$daterequest];
-            
-            $saved = $r->save();
+        $r->daterequest = $result[$daterequest];
         
-            if(!$saved){
+        $saved = $r->save();
+    
+        if(!$saved){
 
-                $message['message'] = 'مشکلی در ثبت اطلاعات شما به وجود آمده لطفا دوباره تلاش کنید';
+            $message['message'] = 'مشکلی در ثبت اطلاعات شما به وجود آمده لطفا دوباره تلاش کنید';
 
-                $message['class'] = 'alert-warning';
+            $message['class'] = '-danger';
 
-                return redirect()->back()->with('message',$message);
-            
-            }
-            else{
-
-                if(!Auth::check()){
-
-                    $user = User::where('users.mobile','=',$request->get('mobile'))->first();
-
-                    if(is_null($user)){
-
-                        $user = new User();
-                
-                        $user->name = $request->get('name');
-                    
-                        $user->mobile = $request->get('mobile');
-                            
-                        $user->lastname = $request->get('lastname');
-                            
-                        $user->password = Hash::make('PA'.'EI'.$r->id);
-
-                        $user->points = 150;
-
-                        $user->save();
-
-                    }
-
-                }
-                else{
-
-                    $user = Auth::user();
-
-                    $points = Auth::user()->points; 
-
-                    $points = $points + 15;;
-
-                    $user->points = $points;
-
-                    $user->save();
-
-                }
-
-                $r->userid = $user->id;
-    			
-    			$r->requestid = "RQE" . "01" .  $r->id;
-    			
-    			$r->save();
-                
-                $pa = 'PA'.'EI'.$r->id;
-
-
-                if(!Auth::check()){
-                	Smsirlaravel::send(['مشترک عزیز با سلام'.'،'.'درخواست شما با موفقیت ثبت گردید'.'نام کاربری :'.$r->mobile.'و رمز عبور شما :'.$pa.'شما می توانید با ورود به حساب کاربری خود از وضعیت درخواست خود مطلع شوید','درخواست جدیدی در سامانه ثبت شد.'],[$user->mobile,'09120924699']);
-
-                	Smsirlaravel::send([$r->name.' '.$r->lastname.' '.'عزیز'.'به باشگاه مشتریان امداد آی تی خوش آمدید جهت استفاده از امکانات و تخفیفات ویژه به حساب کاربری خود در وب سایت ما مراجعه کنید'.'http://emdadit.com'],[$user->mobile]);
-    			}
-    			else{
-    				
-    				Smsirlaravel::send([$r->name.' '.$r->lastname.' '.'عزیز درخواست شما با موفقیت در سامانه ثبت گردید'],[$user->mobile,'09120924699']);
-    				
-    			}
-    			
-                $messagesuccessrequest['message'] = 'ثبت اطلاعات شما با موفقیت انجام شد این اطمینان به شما داده میشود که کارشناسان ما با شما در کمترین ممکن زمان تماس بگیرند .';
-
-                $messagesuccessrequest['class'] = 'alert-success';
-
-                $submitstatus['class'] = 'alert-success';
-
-                $validates = $validate->errors();
-    			
-    		    
-                return redirect()->back()->with([
-                
-                    'messagesuccessrequest' => $messagesuccessrequest,
-
-                    'errorvalidate' => $validates,
-        				
-        			'requestids' => $r->requestid,
-        				
-        			'name' => $r->name,
-        				
-        			'mobile' => $r->mobile,
-
-                    'password' => $pa,
-
-                    'submitstatus' => $submitstatus
-
-                ]);
-
-            }
+            return redirect()->back()->with('message',$message);
+        
         }
         else{
 
-            $error['class'] = 'errorregisterlicense';
+            
 
+            $r->userid = Auth::user()->id;
+            
+            $r->requestid = "RQE" . "01" .  $r->id;
+            
+            $r->save();
+            
+            $pa = 'PA'.'EI'.$r->id;
+            
+            $message['message'] = 'ثبت اطلاعات شما با موفقیت انجام شد این اطمینان به شما داده میشود که کارشناسان ما با شما در کمترین ممکن زمان تماس بگیرند .';
+
+            $message['class'] = '-primary';
+
+            $validates = $validate->errors();
+            
+            
             return redirect()->back()->with([
 
-                'error' => $error
+
+                'errorvalidate' => $validates,
+
+                'message' => $message
+                    
+
             ]);
 
         }

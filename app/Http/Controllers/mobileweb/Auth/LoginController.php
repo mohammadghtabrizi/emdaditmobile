@@ -10,6 +10,8 @@ use Session;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\UsersVerification;
 
 
 
@@ -24,32 +26,58 @@ class LoginController extends Controller
     public function login(Request $request){
         
         $username = $request->get('mobile');
+        
+        $getuser = User::where('users.mobile','like',$username)
+        ->get();
+    
+        if(!is_null($getuser->first())){
+            return redirect()->route('verification_front_end_user')->with('user',$getuser);
+        }
 
-        $pass = $request->get('password');
+        if(is_null($getuser->first())){
+            return route('register_view_user')->with([]);
+        }
 
-        $remember_me = $request->get('rememberme');
+        
 
-        if(!is_null($remember_me)){
+        // if(!Auth::attempt(['mobile' => $username, 'password' => $pass], $remember_me)) {
+            
+            
+        //     Session::flash('login_faild','نام کاربری یا رمزعبور اشتباه می باشد!');
 
-            $remember_me = true;
+        //     $message['message'] = 'نام کاربری یا رمزعبور اشتباه می باشد!';
+
+        //     $message['class'] = '-danger';
+
+        //     return redirect()->back()->with('message',$message);
+
+        // }
+
+        // return redirect()->route('dashboard_users');
+        
+
+    }
+
+    public function userverification(){
+        
+        $user = session('user');
+        
+        if(!is_null($user)){
+            
+            $mobile = $user->first()->mobile;
+
+        }
+        else{
+
+            return redirect()->back();
         }
         
 
-        if(!Auth::attempt(['mobile' => $username, 'password' => $pass], $remember_me)) {
-            
-            
-            Session::flash('login_faild','نام کاربری یا رمزعبور اشتباه می باشد!');
+        return view('mobile-view/auth/user-verification')->with([
 
-            $message['message'] = 'نام کاربری یا رمزعبور اشتباه می باشد!';
+            'mobile' => $mobile
 
-            $message['class'] = '-danger';
-
-            return redirect()->back()->with('message',$message);
-
-        }
-
-        return redirect()->route('dashboard_users');
-        
+        ]);
 
     }
 

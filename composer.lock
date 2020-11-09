@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8cb1da9bf457a865bef060951ee2d03d",
+    "content-hash": "e48a60c041d8ba78ed53144c44aa9e92",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -892,6 +892,47 @@
                 "url"
             ],
             "time": "2020-09-30T07:37:11+00:00"
+        },
+        {
+            "name": "ippanel/php-rest-sdk",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ippanel/php-rest-sdk.git",
+                "reference": "ef0375c46502ebdcf5cf2aec955492d0b7f384f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ippanel/php-rest-sdk/zipball/ef0375c46502ebdcf5cf2aec955492d0b7f384f9",
+                "reference": "ef0375c46502ebdcf5cf2aec955492d0b7f384f9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "IPPanel\\": "src/IPPanel/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "ippanel",
+                    "email": "dev@ippanel.com"
+                }
+            ],
+            "description": "IPPanel REST API client",
+            "homepage": "https://github.com/ippanel/php-rest-sdk",
+            "time": "2020-02-18T14:41:21+00:00"
         },
         {
             "name": "laravel/framework",

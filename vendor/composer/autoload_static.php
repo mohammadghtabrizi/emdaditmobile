@@ -136,6 +136,7 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         array (
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
+            'IPPanel\\' => 8,
         ),
         'G' => 
         array (
@@ -412,6 +413,10 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'IPPanel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -534,11 +539,11 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Auth\\LogoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/LogoutController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\mobileweb\\Auth\\Dashboard\\MainDashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/Dashboard/MainDashboardController.php',
         'App\\Http\\Controllers\\mobileweb\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/LoginController.php',
+        'App\\Http\\Controllers\\mobileweb\\Auth\\LogoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/Auth/LogoutController.php',
         'App\\Http\\Controllers\\mobileweb\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/MainController.php',
         'App\\Http\\Controllers\\mobileweb\\blog\\users\\BlogMainController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/blog/users/BlogMainController.php',
         'App\\Http\\Controllers\\mobileweb\\product\\users\\ProductMainController' => __DIR__ . '/../..' . '/app/Http/Controllers/mobileweb/product/users/ProductMainController.php',
@@ -552,11 +557,14 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\UserIsAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/UserIsAuth.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Activity' => __DIR__ . '/../..' . '/app/Models/Activity.php',
         'App\\Models\\BlogCategory' => __DIR__ . '/../..' . '/app/Models/BlogCategory.php',
         'App\\Models\\BlogComment' => __DIR__ . '/../..' . '/app/Models/BlogComment.php',
         'App\\Models\\BlogFile' => __DIR__ . '/../..' . '/app/Models/BlogFile.php',
         'App\\Models\\BlogPost' => __DIR__ . '/../..' . '/app/Models/BlogPost.php',
+        'App\\Models\\MeRequest' => __DIR__ . '/../..' . '/app/Models/MeRequest.php',
         'App\\Models\\ProductBrands' => __DIR__ . '/../..' . '/app/Models/ProductBrands.php',
+        'App\\Models\\ProductCart' => __DIR__ . '/../..' . '/app/Models/ProductCart.php',
         'App\\Models\\ProductCategory' => __DIR__ . '/../..' . '/app/Models/ProductCategory.php',
         'App\\Models\\ProductColors' => __DIR__ . '/../..' . '/app/Models/ProductColors.php',
         'App\\Models\\ProductImages' => __DIR__ . '/../..' . '/app/Models/ProductImages.php',
@@ -564,7 +572,9 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'App\\Models\\ProductPropertyKey' => __DIR__ . '/../..' . '/app/Models/ProductPropertyKey.php',
         'App\\Models\\ProductPropertyValue' => __DIR__ . '/../..' . '/app/Models/ProductPropertyValue.php',
         'App\\Models\\Products' => __DIR__ . '/../..' . '/app/Models/Products.php',
+        'App\\Models\\Transaction' => __DIR__ . '/../..' . '/app/Models/Transaction.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UsersVerification' => __DIR__ . '/../..' . '/app/Models/UsersVerification.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -1607,6 +1617,18 @@ class ComposerStaticInit088df544ccf4cc1a49180508c959c3b3
         'Highlight\\RegExMatch' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExMatch.php',
         'Highlight\\RegExUtils' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExUtils.php',
         'Highlight\\Terminators' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Terminators.php',
+        'IPPanel\\Client' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Client.php',
+        'IPPanel\\Errors\\Error' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Errors/Error.php',
+        'IPPanel\\Errors\\HttpException' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Errors/HttpException.php',
+        'IPPanel\\Errors\\ResponseCodes' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Errors/ResponseCodes.php',
+        'IPPanel\\HTTPClient' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/HTTPClient.php',
+        'IPPanel\\Models\\Base' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Models/Base.php',
+        'IPPanel\\Models\\InboxMessage' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Models/InboxMessage.php',
+        'IPPanel\\Models\\Message' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Models/Message.php',
+        'IPPanel\\Models\\PaginationInfo' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Models/Response.php',
+        'IPPanel\\Models\\Pattern' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Models/Pattern.php',
+        'IPPanel\\Models\\Recipient' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Models/Recipient.php',
+        'IPPanel\\Models\\Response' => __DIR__ . '/..' . '/ippanel/php-rest-sdk/src/IPPanel/Models/Response.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',

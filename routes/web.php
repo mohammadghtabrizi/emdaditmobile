@@ -18,10 +18,12 @@ Route::get('/', 'App\Http\Controllers\mobileweb\MainController@index')->name('in
 
 
 /*Expert Request*/
-Route::get('expertrequest','App\Http\Controllers\mobileweb\MainController@expertrequest')->name('expertrequest');
+Route::group(['prefix' => '/','middleware' => ['App\Http\Middleware\userIsAuth']],function(){
 
-Route::post('store_expertrequest','App\Http\Controllers\mobileweb\MainController@addExpert')->name('store_expertrequest');
+	Route::get('expertrequest','App\Http\Controllers\mobileweb\MainController@expertrequest')->name('expertrequest');
 
+	Route::post('store_expertrequest','App\Http\Controllers\mobileweb\MainController@addExpert')->name('store_expertrequest');
+});
 
 // Products 
 
@@ -69,12 +71,16 @@ Route::group(['prefix' => 'auth'],function(){
 	Route::post('/login','App\Http\Controllers\mobileweb\Auth\LoginController@login')->name('login_front_end_user');
 
 	Route::get('/login','App\Http\Controllers\mobileweb\Auth\LoginController@index')->name('login_front_end_user_view');
+	
+	Route::get('/verification','App\Http\Controllers\mobileweb\Auth\LoginController@userverification')->name('verification_front_end_user');
 
 	Route::get('/logout','App\Http\Controllers\mobileweb\Auth\LogoutController@Logout')->name('logout_front_end_user');
 
 	Route::get('/register','App\Http\Controllers\mobileweb\Auth\RegisterController@registerview')->name('register_view_user');
 
 	Route::post('/register','App\Http\Controllers\mobileweb\Auth\RegisterController@registeradd')->name('register_add_user');
+
+	
 
 });
 
