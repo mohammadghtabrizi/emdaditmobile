@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\mobileweb\Auth;
 
 use Illuminate\Http\Request;
 
@@ -10,20 +10,18 @@ use Session;
 
 use App\Http\Controllers\Controller;
 
-use App\User;
-
-use Hash;
+use App\Models\User;
+use App\Models\UsersVerification;
 
 use Validator;
+
+use \Carbon\Carbon;
 
 class RegisterController extends Controller
 {
     public function registerview(){
 
-    	
-
-        return view('/auth/register-view')->with([
-
+        return view('/mobile-view/auth/register-view')->with([
 
         ]);
     }
@@ -32,17 +30,12 @@ class RegisterController extends Controller
 
     	$roles = [
 
-            'name' => 'string|min:3',
+            'name' => 'required|string|min:3',
 
-            'mobile' => 'numeric',
+            'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
 
-            'lastname' => 'string|min:3',
-
-            'email' => 'email',
-
-            'password' => 'min:8'
+            'lastname' => 'required|string|min:5',
 			
-
         ];
 
         $attributes = [
@@ -52,10 +45,6 @@ class RegisterController extends Controller
             'lastname' => 'نام خانوادگی',
 
             'mobile' => 'موبایل',
-
-            'email' => 'ایمیل',
-
-            'password' => 'کلمه عبور'
 
         ];
 
@@ -74,71 +63,65 @@ class RegisterController extends Controller
 
             $message['message'] = 'مشکلی در ثبت اطلاعات شما به وجود آمده لطفا خطاهای زیر را بررسی و دوباره امتحان نمایید .';
 
-            $message['class'] = 'alert-warning';
+            $message['class'] = '-danger';
 
             return redirect()->back()->withErrors($validate)->with('message',$message);
 
 
         }
 
-        $password = $request->get('password');
-
-        if(!is_null($password) && $password != ''){
-
-            if($password != $request->get('password-confirm')){
-				
-
-                $message['message'] = 'پسورد باید با تکرار آن برابر باشد';
-
-            	$message['class'] = 'alert-warning';
-
-                return redirect()->back()->with('message',$message);
-
-            }
-            $adduser = new User();
-
-            $adduser->password = Hash::make($password);
-
-        }
-
-
-
-
         $userexist = User::where('users.mobile','=',$request->get('mobile'))->first();
 
         if(is_null($userexist)){
 
 
-    		
+    		$adduser = new User();
     		$adduser->name = $request->get('name');
     		$adduser->lastname = $request->get('lastname');
-    		$adduser->email = $request->get('email');
     		$adduser->mobile = $request->get('mobile');
 
-    		$saved = $adduser->save();
+            $saved = $adduser->save();
 
     		if(!$saved){
 
                 $message['message'] = 'مشکلی در ثبت اطلاعات شما به وجود آمده لطفا دوباره تلاش کنید';
 
-                $message['class'] = 'alert-warning';
+                $message['class'] = '-danger';
 
                 return redirect()->back()->with('message',$message);
             
             }
 
-            $message['message'] = 'ثبت نام شما با موفقیت انجام شد .';
+            $code = '123456';
 
-            $message['class'] = 'alert-success';
+            $addverification = new UsersVerification();
 
-            return redirect()->back()->with('message',$message);
+            $addverification->user_id = $adduser->id;
+            $addverification->code = $code;
+            $addverification->expireat = Carbon::now()->addMinutes(2);
+            $count = 1;
+
+            $save = $addverification->save();
+
+            $message['message'] = 'کد تایید برای شماره موبایل شما با موفقیت ارسال گردید .';
+
+            $message['class'] = '-primary';
+
+            return redirect()->route('verification_user_view')->with([
+                
+                'user' => $adduser,
+
+                'message' => $message
+                
+            
+            ]);
 
     	}
     	else{
 
-    		$message['message'] = 'متاسفانه کاربری با این شماره همراه وجود دارد و امکان ثبت نام مجدد نیست';
+    		$message['message'] = 'شما قبلا با این شماره همراه ثبت نام کرده اید .';
 
-            $message['class'] = 'alert-warning';
+            $message['class'] = '-danger';
 
             return redirect()->back()->with('message',$message);
 

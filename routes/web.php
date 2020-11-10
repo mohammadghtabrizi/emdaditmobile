@@ -72,7 +72,9 @@ Route::group(['prefix' => 'auth'],function(){
 
 	Route::get('/login','App\Http\Controllers\mobileweb\Auth\LoginController@index')->name('login_front_end_user_view');
 	
-	Route::get('/verification','App\Http\Controllers\mobileweb\Auth\LoginController@userverification')->name('verification_front_end_user');
+	Route::get('/verification','App\Http\Controllers\mobileweb\Auth\LoginController@userverificationview')->name('verification_user_view');
+
+	Route::post('/verification','App\Http\Controllers\mobileweb\Auth\LoginController@userverification')->name('verification_user');
 
 	Route::get('/logout','App\Http\Controllers\mobileweb\Auth\LogoutController@Logout')->name('logout_front_end_user');
 

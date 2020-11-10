@@ -43,16 +43,19 @@
         <img src="{{asset('img/image-4.png')}}" alt="خدمات امداد آی تی" class="apple right-image align-self-center">
         <div class="col align-self-center px-3 text-center">
         
-            
-            <form class="form-signin shadow" method="POST" action="{{route('login_front_end_user')}}">
+            @php $user = session('user') @endphp
+            <form class="form-signin shadow" method="POST" action="{{route('verification_user')}}">
             @csrf
             <img src="{{asset('img/emdaditlogo.png')}}" alt="لوگو امداد آی تی" class="logo-small">
             <h5 class="text-dark " style="padding:20px;"> EmdadIT</h5>
             <h5 class="text-dark" style="text-align:right;"> کد تاییدیه ارسال شده را وارد نمایید</h5>
-            <p class="text-dark " style="text-align:right;"> کد تایید به شماره {{$mobile}} ارسال شده است .</p>
+            <p class="text-dark " style="text-align:right;"> کد تایید به شماره {{$user->mobile}} ارسال شده است .</p>
                 <div class="form-group float-label">
-                    <input id="inputEmail" class="form-control" type="mobile" name="mobile" required="" autofocus="">
-                    <label for="inputEmail" class="form-control-label">کد تایید</label>
+                    <input id="form_code" class="form-control" type="code" name="code" required="" autofocus="">
+                    <label for="form_code" class="form-control-label">کد تایید</label>
+                    @error('code')
+                    <div class="help-text text-danger" style="text-align:right;">{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="row">
                     <div class="col-auto">
@@ -66,6 +69,7 @@
             </p>
         </div>
     </div>
+    @include('mobile-view.partials-main.notification-fullscreen')
 
     <!-- jquery, popper and bootstrap js -->
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
@@ -78,6 +82,22 @@
 
     <!-- template custom js -->
     <script src="{{asset('js/main.js')}}"></script>
+    <script>
+        $(window).on('load', function() {      
+            /* notification view and hide */
+            setTimeout(function() {
+                $('.notification').addClass('active');
+                setTimeout(function() {
+                    $('.notification').removeClass('active');
+                }, 8000);
+            }, 500);
+            $('.closenotification').on('click', function() {
+                $(this).closest('.notification').removeClass('active')
+            });
+        });
+
+    </script>
+    
 
 
 </body>

@@ -51,8 +51,11 @@
             <p class="text-dark" style="text-align:right;"> ورود / ثبت نام</p>
             <p class="text-dark " style="text-align:right;"> شماره همراه خود را وارد نمایید</p>
                 <div class="form-group float-label">
-                    <input id="inputEmail" class="form-control" type="mobile" name="mobile" required="" autofocus="">
-                    <label for="inputEmail" class="form-control-label">شماره همراه</label>
+                    <input id="form_mobile" class="form-control" type="mobile" name="mobile" required="" autofocus="">
+                    <label for="form_mobile" class="form-control-label">شماره همراه</label>
+                    @error('mobile')
+                    <div class="help-text text-danger" style="text-align:right;">{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="row">
                     <div class="col-auto">
@@ -66,6 +69,7 @@
             </p>
         </div>
     </div>
+    @include('mobile-view.partials-main.notification-fullscreen')
 
     <!-- jquery, popper and bootstrap js -->
     <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
@@ -78,6 +82,23 @@
 
     <!-- template custom js -->
     <script src="{{asset('js/main.js')}}"></script>
+
+    <script>
+        $(window).on('load', function() {      
+            /* notification view and hide */
+            setTimeout(function() {
+                $('.notification').addClass('active');
+                setTimeout(function() {
+                    $('.notification').removeClass('active');
+                }, 8000);
+            }, 500);
+            $('.closenotification').on('click', function() {
+                $(this).closest('.notification').removeClass('active')
+            });
+        });
+
+    </script>
+    
 
 
 </body>
