@@ -17,14 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\mobileweb\MainController@index')->name('index');
 
 
-/*Expert Request*/
-Route::group(['prefix' => '/','middleware' => ['App\Http\Middleware\userIsAuth']],function(){
-
-	Route::get('expertrequest','App\Http\Controllers\mobileweb\MainController@expertrequest')->name('expertrequest');
-
-	Route::post('store_expertrequest','App\Http\Controllers\mobileweb\MainController@addExpert')->name('store_expertrequest');
-});
-
 // Products 
 
 Route::group(['prefix' => 'products'],function(){
@@ -37,7 +29,7 @@ Route::group(['prefix' => 'products'],function(){
 
 	Route::get('/detail/{id}/{slug?}','App\Http\Controllers\mobileweb\product\users\ProductMainController@showdetailproduct')->name('show_detail_product');
 
-	Route::get('/addcart/{id}/{slug?}','App\Http\Controllers\mobileweb\product\users\ProductMainController@addtocart')->name('add_to_cart');
+	
 
 
 });
@@ -58,11 +50,13 @@ Route::group(['prefix' => 'blog'],function(){
 
 	Route::post('/addreplycomment','mobileweb\blog\users\BlogMainController@addreplycomment')->name('add_reply_comment');
 
+	// Comments
+
+	Route::post('store_comment','mobileweb\blog\users\BlogMainController@addcomment')->name('store_comment');
+
 });
 
-// Comments
 
-Route::post('store_comment','mobileweb\blog\users\BlogMainController@addcomment')->name('store_comment');
 
 
 // Auth
@@ -95,12 +89,39 @@ Route::group(['prefix' => 'dashboard'],function(){
 
 		Route::post('/update_user_profile','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@UpdateUserProfile')->name('update_user_profile');
 
-		Route::get('/my_request','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@showmyrequest')->name('show_my_request');
-
-		Route::get('/my_address','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@showmyaddress')->name('show_my_address');
-
 		Route::post('/update_user_address','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@UpdateUserAddress')->name('update_user_address');
 
+		/*Expert Request*/
+
+		Route::get('/expertrequest','App\Http\Controllers\mobileweb\MainController@expertrequest')->name('expertrequest');
+
+		Route::post('/store_expertrequest','App\Http\Controllers\mobileweb\MainController@addExpert')->name('store_expertrequest');
+
+		Route::get('/request_history','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@requesthistory')->name('request_history_users');
+
+		Route::get('/change_status_my_request/{id}','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@changestatusrequest')->name('change_status_my_request');
+
+
+
+		/* Product */
+
+		Route::get('/show_my_orders/{id}','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@showmyorders')->name('show_my_orders');
+
+		Route::get('/show_my_favorites','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@showmyfav')->name('show_my_favorites');
+
+		Route::get('/delete_my_favorite/{id}/{slug?}','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@delmyfav')->name('delete_my_favorite');
+
+		Route::get('/addcart/{id}/{slug?}','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@addtocart')->name('add_to_cart');
+
+		Route::get('/addfavorites/{id}/{slug?}','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@addtofav')->name('add_to_favorites');
+
+		Route::get('/my_cart','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@showmycart')->name('show_my_cart');
+
+		Route::get('/delete_product_cart/{id}/{slug?}','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@deleteproductcart')->name('delete_product_cart');
+
+		Route::post('/add_discount_product','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@discountproductadd')->name('add_discount_product');
+
+		Route::post('/submit_my_order','App\Http\Controllers\mobileweb\Auth\Dashboard\MainDashboardController@submitmyorder')->name('submit_my_order');
 
 		
 		

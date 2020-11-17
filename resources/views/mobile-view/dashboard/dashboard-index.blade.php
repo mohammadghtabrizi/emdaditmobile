@@ -77,14 +77,43 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-cart" role="tabpanel" aria-labelledby="nav-cart-tab">
                     <ul class="list-items">
+                        <li style="background-color: bisque;">
+                            <div class="row">
+                                <div class="col align-self-center pr-1">شماره سفارش</div>
+                                <div class="col align-self-center pr-1">تاریخ ثبت سفارش</div>
+                                <div class="col align-self-center pr-1">مبلغ پرداخت شده</div>
+                                <div class="col align-self-center pr-1">وضعیت</div>
+                            </div>
+                        </li>
                     
-                    @foreach($cart as $item)
+                    @foreach($orders as $item)
                         <li>
                             <div class="row">
-                                <div class="col align-self-center pr-1"><img src="{{asset('img/products/images')}}/{{$item->image_source}}" style="max-width:85px;"></div>
+                                <div class="col align-self-center pr-1">{{$item->po_order_id}}</div>
                                 <div class="col align-self-center pr-1">{{\Morilog\Jalali\CalendarUtils::strftime('Y/m/d', strtotime($item->CREATED_AT))}}</div>
-                                <div class="col align-self-center pr-1">{{$item->name}}</div>
-                                <div class="col align-self-center pr-1"><a href="#"><button type="button" class="mb-2 btn btn-outline-primary">نمایش</button></a></div>
+                                <div class="col align-self-center pr-1">{{$item->po_price_purchased}}</div>
+                                <div class="col align-self-center pr-1">
+                                    @if($item->po_status === 0)
+                                    <a href="{{route('show_my_orders',['id' => $item->po_id,'slug' => $item->po_order_id])}}">
+                                        <button type="button" class="mb-2 btn {{ $orderstatuses[$item->po_status]['color'] }}">{{ $orderstatuses[$item->po_status]['title'] }}</button>
+                                    </a>
+                                    @endif
+                                    @if($item->po_status === 1)
+                                    <a href="{{route('show_my_orders',['id' => $item->po_id,'slug' => $item->po_order_id])}}">
+                                        <button type="button" class="mb-2 btn {{ $orderstatuses[$item->po_status]['color'] }}">{{ $orderstatuses[$item->po_status]['title'] }}</button>
+                                    </a>
+                                    @endif
+                                    @if($item->po_status === 2)
+                                    <a href="{{route('show_my_orders',['id' => $item->po_id,'slug' => $item->po_order_id])}}">
+                                        <button type="button" class="mb-2 btn {{ $orderstatuses[$item->po_status]['color'] }}">{{ $orderstatuses[$item->po_status]['title'] }}</button>
+                                    </a>
+                                    @endif
+                                    @if($item->po_status === 3)
+                                    <a href="{{route('show_my_orders',['id' => $item->po_id,'slug' => $item->po_order_id])}}">
+                                        <button type="button" class="mb-2 btn {{ $orderstatuses[$item->po_status]['color'] }}">{{ $orderstatuses[$item->po_status]['title'] }}</button>
+                                    </a>
+                                    @endif
+                                </div>
                             </div>
                         </li>
                     @endforeach

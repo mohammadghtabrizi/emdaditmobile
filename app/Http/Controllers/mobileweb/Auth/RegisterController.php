@@ -107,7 +107,7 @@ class RegisterController extends Controller
 
             $message['class'] = '-primary';
 
-            return redirect()->route('verification_user_view')->with([
+            return redirect()->route('verification_user_view',['mobile' => $request->get('mobile')])->with([
                 
                 'user' => $adduser,
 

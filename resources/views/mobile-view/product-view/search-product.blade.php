@@ -21,27 +21,27 @@
                                     <figure class="product-image"><img src="{{asset('img/products/images')}}/{{$item->image_source}}" alt="" class=""></figure>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-sm btn-link p-0 float-right"><i class="material-icons md-18">favorite_outline</i></button>
-                                    @if($item->price->first()->discount_status === 1)
-                                    <div class="badge badge-primary float-right mt-1">{{$item->price->first()->discount_percent}}&nbsp;تخفیف</div>
-                                    <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->price->first()->slug])}}" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
-                                    <del>{{ $item->price->first()->price }}</del>
-                                    <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->discount_price }}</h5>
+                                <a href="{{route('add_to_favorites',['id' => $item->price->price_id,'slug' => $item->slug])}}"><button class="btn btn-sm btn-link p-0 float-right"><i class="material-icons md-18">favorite_outline</i></button></a>
+                                    @if($item->price->discount_status === 1)
+                                    <div class="badge badge-primary float-right mt-1">{{$item->price->discount_percent}}&nbsp;تخفیف</div>
+                                    <a href="{{route('show_detail_product',['id' => $item->price->price_id,'slug' => $item->slug])}}" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                                    <del>{{ $item->price->price }}</del>
+                                    <h5 class="text-success font-weight-normal mb-0">{{ $item->price->discount_price }}</h5>
                                     @endif
-                                    @if($item->price->first()->amazing_status === 1)
-                                    <div class="badge badge-danger float-right mt-1">{{$item->price->first()->amazing_percent}}&nbsp;تخفیف</div>
-                                    <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->price->first()->slug])}}" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
-                                    <del>{{ $item->price->first()->price }}</del>
-                                    <h5 class="text-success font-weight-normal mb-0">{{ $item->price->first()->amazing_price }}</h5>
+                                    @if($item->price->amazing_status === 1)
+                                    <div class="badge badge-danger float-right mt-1">{{$item->price->amazing_percent}}&nbsp;تخفیف</div>
+                                    <a href="{{route('show_detail_product',['id' => $item->price->price_id,'slug' => $item->slug])}}" class="text-dark mb-1 mt-2 h6 d-block">{{$item->name}}</a>
+                                    <del>{{ $item->price->price }}</del>
+                                    <h5 class="text-success font-weight-normal mb-0">{{ $item->price->amazing_price }}</h5>
                                     @endif
-                                    @if($item->price->first()->discount_status === 0 && $item->price->first()->amazing_status === 0)
-                                    <a href="{{route('show_detail_product',['id' => $item->price->first()->price_id,'slug' => $item->price->first()->slug])}}" class="text-dark mb-1 h6 d-block">{{$item->name}}</a>
-                                    <h5 class="text-success font-weight-normal mb-0">{{$item->price->first()->price}}</h5>
+                                    @if($item->price->discount_status === 0 && $item->price->amazing_status === 0)
+                                    <a href="{{route('show_detail_product',['id' => $item->price->price_id,'slug' => $item->slug])}}" class="text-dark mb-1 h6 d-block">{{$item->name}}</a>
+                                    <h5 class="text-success font-weight-normal mb-0">{{$item->price->price}}</h5>
                                     @endif
-                                    <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->first()->warranty_date}}<br>{{$item->price->first()->warranty_name}}</p>
+                                    <p class="text-discount small text-mute mb-0">گارانتی {{$item->price->warranty_date}}<br>{{$item->price->warranty_name}}</p>
                                 </div>
                             </div>
-                            <a href="{{route('add_to_cart',['id' => $item->price->first()->price_id,'slug' => $item->price->first()->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
+                            <a href="{{route('add_to_cart',['id' => $item->price->price_id,'slug' => $item->slug])}}"><button class="btn btn-default button-rounded-36 shadow-sm float-bottom-right"><i class="material-icons md-18">shopping_cart</i></button></a>
                         </div>
                     </div>
                 </div>

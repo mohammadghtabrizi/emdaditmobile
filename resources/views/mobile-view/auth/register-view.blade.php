@@ -43,7 +43,7 @@
         <img src="{{asset('img/image-4.png')}}" alt="خدمات امداد آی تی" class="apple right-image align-self-center">
         <div class="col align-self-center px-3 text-center">
         
-            @php $user = session('user') @endphp
+            @php $mobile = session('mobile') @endphp
             <form class="form-signin shadow" method="POST" action="{{route('register_add_user')}}">
             @csrf
             <img src="{{asset('img/emdaditlogo.png')}}" alt="لوگو امداد آی تی" class="logo-small">
@@ -51,7 +51,7 @@
             <h5 class="text-dark" style="text-align:right;"> ثبت نام</h5>
             <p class="text-dark " style="text-align:right;"> لطفا اطلاعات خود را وارد نمایید</p>
                 <div class="form-group float-label">
-                    <input id="form_mobile" class="form-control" type="mobile" name="mobile" required="" autofocus="">
+                    <input id="form_mobile" class="form-control" type="mobile" name="mobile" required="" autofocus="" value="{{$mobile}}">
                     <label for="form_mobile" class="form-control-label">شماره همراه</label>
                     @error('mobile')
                     <div class="help-text text-danger" style="text-align:right;">{{$message}}</div>

@@ -29,21 +29,36 @@
                 </div>
                 @endif
                 @endif
-                <h5 class="subtitle text-uppercase"><span>منو</span></h5>
+                <h5 class="subtitle text-uppercase text-warning"><span>منو اصلی</span></h5>
                 <div class="list-group main-menu">
                     
                     <a href="{{route('index')}}" class="list-group-item list-group-item-action @if($activeMenu == 'home') active @endif">صفحه اصلی</a>
-                    <a href="{{route('index')}}" class="list-group-item list-group-item-action ">فروشگاه</a>
+                    @if(!Auth::check())
                     <a href="{{route('expertrequest')}}" class="list-group-item list-group-item-action">درخواست کارشناس </a>
                     <a href="#" class="list-group-item list-group-item-action"> CTRL+P </a>
-                    @if(!Auth::check())
-                    <a href="{{route('login_front_end_user')}}" class="list-group-item list-group-item-action mt-4">ورود/ثبت نام</a>
+                    <a href="{{route('login_front_end_user')}}" class="list-group-item list-group-item-action">ورود/ثبت نام</a>
                     @endif
+                    <a href="{{route('index')}}" class="list-group-item list-group-item-action ">درباره ما</a>
+                    <a href="{{route('index')}}" class="list-group-item list-group-item-action ">تماس با ما</a>
+                </div>
+                <h5 class="subtitle text-uppercase text-warning"><span>دسته بندی ها</span></h5>
+                <div class="list-group main-menu">
+                    
+                    <a href="{{route('index')}}" class="list-group-item list-group-item-action">ماشین های اداری</a>
+                    <a href="{{route('index')}}" class="list-group-item list-group-item-action">کامپیوتر و لپ تاپ</a>
+                    <a href="{{route('index')}}" class="list-group-item list-group-item-action">مودم و تجهیزات شبکه</a>
+                    <a href="{{route('index')}}" class="list-group-item list-group-item-action">موبایل</a>
+                </div>
+                @if(Auth::check())
+                <h5 class="subtitle text-uppercase text-warning"><span>امداد آی تی من</span></h5>
+                <div class="list-group main-menu">
+                    <a href="{{route('expertrequest')}}" class="list-group-item list-group-item-action">درخواست کارشناس </a>
+                    <a href="#" class="list-group-item list-group-item-action"> CTRL+P </a>
                     @if(Auth::check())
-                    <a href="{{route('dashboard_users')}}" class="list-group-item list-group-item-action"> پروفایل </a>
                     <a href="{{route('logout_front_end_user')}}" class="list-group-item list-group-item-action mt-4">خروج از سیستم</a>
                     @endif
                 </div>
+                @endif
             </div>
         </div>
 

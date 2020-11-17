@@ -37,10 +37,8 @@ class ProductMainController extends Controller
 
         foreach($categories as $index => $item){
 
-            $categories[$index]['products'] = Products::join('product_images','product_images.pro_id','products.id')
-            ->where('products.cat_id','=',$item->category_id)
-            ->where('product_images.image_index','=',1)
-            ->select('products.id as product_id','products.name as product_name','products.slug as product_slug','product_images.image_source as images_image_source')
+            $categories[$index]['products'] = Products::where('products.cat_id','=',$item->category_id)
+            ->select('products.id as product_id','products.name as product_name','products.slug as product_slug','products.image_source as images_image_source')
             ->orderBy('products.created_at','desc')
             ->take(6)
             ->get();
@@ -105,11 +103,9 @@ class ProductMainController extends Controller
             ->take(8)
             ->get();
 
-        $products = Products::join('product_images','products.id','=','product_images.pro_id')
-        ->join('product_category','products.cat_id','=','product_category.id')
-        ->where('product_images.image_index','=','1')
+        $products = Products::join('product_category','products.cat_id','=','product_category.id')
         ->where('products.cat_id','=',$id)
-        ->select('product_images.image_source','products.id','products.name','products.slug','product_category.name as category_name')
+        ->select('products.image_source','products.id','products.name','products.slug','product_category.name as category_name')
         ->orderBy('products.created_at','desc')
         ->paginate(6);
         
@@ -118,8 +114,7 @@ class ProductMainController extends Controller
             $products[$index]['price'] = ProductPrices::where('product_prices.price_pro_id','=',$item->id)
                 ->select('product_prices.price','product_prices.id AS price_id','product_prices.amazing_status','product_prices.amazing_price','product_prices.amazing_percent','product_prices.discount_status','product_prices.discount_price','product_prices.discount_percent','product_prices.warranty_name','product_prices.warranty_date')
                 ->orderBy('product_prices.price','asc')
-                ->take(1)
-                ->get();
+                ->first();
 
         }
 
@@ -154,26 +149,28 @@ class ProductMainController extends Controller
         
         $idproduct = ProductPrices::select('product_prices.price_pro_id')
         ->where('id','=',$idprice)
-        ->get();
+        ->select('product_prices.price_pro_id')
+        ->first();
 
-        $idproduct = $idproduct->first()->price_pro_id;
+        $idproduct = $idproduct->price_pro_id;
         
         $idcategory = Products::select('products.cat_id')
         ->where('products.id','=',$idproduct)
-        ->get();
+        ->select('products.cat_id')
+        ->first();
 
-        $idcategory = $idcategory->first()->cat_id;
+        $idcategory = $idcategory->cat_id;
 
-        $product = Products::where('products.id','=',$idproduct)->get();
+        $product = Products::where('products.id','=',$idproduct)->first();
         $category = ProductCategory::where('product_category.id','=',$idcategory)->get();
         $brand = ProductBrands::where('product_brands.cat_id','=',$idcategory)->get();
         $color = ProductColors::where('product_colors.product_price_id','=',$idprice)->orderBy('product_colors.price','asc')->get();
         $image = ProductImages::where('product_images.pro_id','=',$idproduct)->orderBy('product_images.image_index','desc')->get();
-        $price = ProductPrices::where('product_prices.id','=',$idprice)->get();
+        $price = ProductPrices::where('product_prices.id','=',$idprice)->first();
 
         $moreprice = '';
 
-        if($price->first()->amazing_status === 0 && $price->first()->discount_status === 0){
+        if($price->amazing_status === 0 && $price->discount_status === 0){
 
             $moreprice = ProductPrices::join('products','product_prices.price_pro_id','=','products.id')
                 ->where('product_prices.price_pro_id','=',$idproduct)
@@ -255,10 +252,8 @@ class ProductMainController extends Controller
 
         $searchproduct = $request->get('searchproduct');
 
-        $products = Products::join('product_images','products.id','=','product_images.pro_id')
-        ->where('product_images.image_index','=','1')
-        ->where('products.name','like','%'.$searchproduct.'%')
-        ->select('product_images.image_source','products.id','products.name','products.slug')
+        $products = Products::where('products.name','like','%'.$searchproduct.'%')
+        ->select('products.image_source','products.id','products.name','products.slug')
         ->orderBy('products.created_at','desc')
         ->paginate(6);
         
@@ -267,8 +262,7 @@ class ProductMainController extends Controller
             $products[$index]['price'] = ProductPrices::where('product_prices.price_pro_id','=',$item->id)
                 ->select('product_prices.price','product_prices.id AS price_id','product_prices.amazing_status','product_prices.amazing_price','product_prices.amazing_percent','product_prices.discount_status','product_prices.discount_price','product_prices.discount_percent','product_prices.warranty_name','product_prices.warranty_date')
                 ->orderBy('product_prices.price','asc')
-                ->take(1)
-                ->get();
+                ->first();
 
         }
         
@@ -297,85 +291,6 @@ class ProductMainController extends Controller
         ]);
     } 
 
-    public function addtocart(Request $request,$id,$slug=''){
-
-        
-        $find = ProductPrices::where('product_prices.id','=',$id)
-        ->first();
-       
-        
-        if(is_null($find)){
-
-            $message['message'] = 'محصول مورد نظر شما یافت نشد';
-
-            $message['class'] = '-danger';
-
-            return redirect()->back()->with('message',$message);
-        }
-
-        $duplicatecart = ProductCart::where('product_cart.pc_price_id','=',$find->id)
-        ->first();
-
-        if(!is_null($duplicatecart)){
-
-
-            $message['message'] = 'این محصول در سبد خرید شما وجود دارد';
-
-            $message['class'] = '-danger';
-
-            return redirect()->back()->with('message',$message);
-        }
-        
-
-        $addcart = new ProductCart();
-        
-        $addcart->pc_user_id = Auth::user()->id;
-
-        $addcart->pc_price_id = $find->id;
-
-        $addcart->pc_product_id = $find->price_pro_id;
-
-        $addcart->pc_price = $find->price;
-
-        $addcart->pc_warranty_name = $find->warranty_name;
-
-        $addcart->pc_warranty_date = $find->warranty_date;
-
-        if($find->discount_status === 1){
-
-            $addcart->pc_discount_status = $find->discount_status;
-
-            $addcart->pc_discount_price = $find->discount_price;
-
-            $addcart->pc_discount_percent = $find->discount_percent;
-        }
-        else if($find->amazing_status === 1){
-
-            $addcart->pc_discount_status = $find->amazing_status;
-
-            $addcart->pc_discount_price = $find->amazing_price;
-
-            $addcart->pc_discount_percent = $find->amazing_percent;
-        }
-
-        $saved = $addcart->save();
-
-        if(!$saved){
-
-            $message['message'] = 'متاسفانه محصول مورد نظر به سبد خرید اضافه نشد';
-
-            $message['class'] = '-danger';
-
-            return redirect()->back()->with('message',$message);
-        
-        }
-
-        $message['message'] = 'محصول مورد نظر به سبد خرید اضافه شد';
-
-        $message['class'] = '-primary';
-
-        return redirect()->back()->with('message',$message);
-        
-    }
+    
 }
     

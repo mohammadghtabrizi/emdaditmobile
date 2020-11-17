@@ -63,105 +63,79 @@ class LoginController extends Controller
         $username = $request->get('mobile');
         
         $getuser = User::where('users.mobile','like',$username)
-        ->get();
+        ->first();
 
-        $getuser = $getuser->first();
+        if(is_null($getuser)){
+
+            return redirect()->route('register_view_user')->with('mobile',$username);
+
+        }
     
-        if(!is_null($getuser)){
-
-            $now = Carbon::now();
-            
+        $now = Carbon::now();
     
-            $perverificationcode = UsersVerification::where('users_verification.user_id','=',$getuser->id)
-            ->where('users_verification.count','<',6)
-            ->where('users_verification.expireat','>',$now)
-            ->orderBy('users_verification.created_at','desc')
-            ->get();
-
-            $perverificationcode = $perverificationcode->first();
-
+        $perverificationcode = UsersVerification::where('users_verification.user_id','=',$getuser->id)
+        ->where('users_verification.count','<',6)
+        ->where('users_verification.expireat','>',$now)
+        ->orderBy('users_verification.created_at','desc')
+        ->first();
+        
+        if(!is_null($perverificationcode)){
             
-            if(!is_null($perverificationcode)){
-                
-                $countsms = UsersVerification::where('id', $perverificationcode->id)->update(['count' => $perverificationcode->count + 1]);
-                
-
-                $message['message'] = 'کد تایید برای شما ارسال شده است لطفا پس از 2 دقیقه تلاش کنید .';
-
-                $message['class'] = '-danger';
-
-                return redirect()->route('verification_user_view')->with([
-                
-                    'message' => $message,
-
-                    'user' => $getuser
-                    
-                    
-                ]);
-
-            }
-            else{
-                
-                $code = '123456';
-
-                $addverification = new UsersVerification();
-
-                $addverification->user_id = $getuser->id;
-                $addverification->code = $code;
-                $addverification->expireat = Carbon::now()->addMinutes(2);
-                $count = 1;
-
-                $save = $addverification->save();
-
-                $message['message'] = 'کد تایید برای شماره موبایل شما با موفقیت ارسال گردید .';
-
-                $message['class'] = '-primary';
-
-                return redirect()->route('verification_user_view')->with([
-                    
-                    'user' => $getuser,
-
-                    'message' => $message
-                    
-                
-                ]);
-            }
+            $countsms = UsersVerification::where('id', $perverificationcode->id)->update(['count' => $perverificationcode->count + 1]);
             
+
+            $message['message'] = 'کد تایید برای شما ارسال شده است لطفا پس از 2 دقیقه تلاش کنید .';
+
+            $message['class'] = '-danger';
+
+            return redirect()->route('verification_user_view',['mobile' => $getuser->mobile])->with([
+            
+                'message' => $message
+                
+                
+            ]);
+
         }
         else{
+            
+            $code = '123456';
 
-            return redirect()->route('register_view_user');
+            $addverification = new UsersVerification();
 
+            $addverification->user_id = $getuser->id;
+
+            $addverification->code = $code;
+
+            $addverification->expireat = Carbon::now()->addMinutes(2);
+
+            $count = 1;
+
+            $save = $addverification->save();
+
+            $message['message'] = 'کد تایید برای شماره موبایل شما با موفقیت ارسال گردید .';
+
+            $message['class'] = '-primary';
+
+            return redirect()->route('verification_user_view',['mobile' => $getuser->mobile])->with([
+
+                'message' => $message
+                
+            
+            ]);
         }
-        
 
-        // if(!Auth::attempt(['mobile' => $username, 'password' => $pass], $remember_me)) {
-            
-            
-        //     Session::flash('login_faild','نام کاربری یا رمزعبور اشتباه می باشد!');
-
-        //     $message['message'] = 'نام کاربری یا رمزعبور اشتباه می باشد!';
-
-        //     $message['class'] = '-danger';
-
-        //     return redirect()->back()->with('message',$message);
-
-        // }
-
-        // return redirect()->route('dashboard_users');
-        
 
     }
 
     public function userverificationview(Request $request){
         
-        $user = session('user');
+        $mobile = $request->get('mobile');
         
-        if(!is_null($user)){
+        if(!is_null($mobile)){
             
             return view('mobile-view/auth/user-verification')->with([
 
-                'user' => $user,
+                'mobile' => $mobile,
 
                 'message' => session('message')
     
@@ -179,13 +153,17 @@ class LoginController extends Controller
 
         $roles = [
 
-            'code' => 'required|numeric|min:6|max:6',
+            'code' => 'required|numeric',
+
+            'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11'
             
         ];
 
         $attributes = [
 
             'code' => 'کد تایید',
+
+            'mobile' => 'موبایل',
 
         ];
 
@@ -203,11 +181,37 @@ class LoginController extends Controller
 
             $message['class'] = '-danger';
 
-            return redirect()->route('verification_user_view')->withErrors($validate)->with('message',$message);
+            return redirect()->route('verification_user_view',['mobile' => $request->get('mobile')])->withErrors($validate)->with('message',$message);
 
 
         }
+
+        //if ro ok konim
+
+        $verificationfinal = User::join('users_verification','users.id','=','users_verification.user_id')
+        ->where('users.mobile','=',$request->get('mobile'))
+        ->where('users_verification.code','=',$request->get('code'))
+        ->select('users.*')
+        ->first();
         
+        if(is_null($verificationfinal)){
+
+            $message['message'] = 'کد تایید اشتباه است .';
+
+            $message['class'] = '-danger';
+
+            return redirect()->route('verification_user_view',['mobile' => $request->get('mobile')])->with([
+
+                'message' => $message
+                
+            
+            ]);
+
+        }
+
+        auth()->login($verificationfinal);
+
+        return redirect()->route('dashboard_users');
     
     }
 

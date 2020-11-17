@@ -7,21 +7,23 @@
                                 <i class="material-icons">account_circle</i>myprofile
                             </a>
                         </div>
+                        @if(Auth::check())
                         <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
+                            <a href="{{route('request_history_users')}}" class="btn @if($activeMenu == 'shop') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
+                                <i class="material-icons">build</i>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="{{route('show_my_favorites')}}" class="btn btn-link-default">
                                 <i class="material-icons">favorite</i>
                             </a>
                         </div>
                         <div class="col-auto">
-                            <a href="#" class="btn @if($activeMenu == 'shop') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
+                            <a href="{{route('show_my_cart')}}" class="btn @if($activeMenu == 'shop') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
                                 <i class="material-icons">local_mall</i>
                             </a>
                         </div>
-                        <div class="col-auto">
-                            <a href="#" class="btn btn-link-default">
-                                <i class="material-icons">insert_chart_outline </i>
-                            </a>
-                        </div>
+                        @endif
                         <div class="col-auto">
                             <a href="{{route('index')}}" class="btn @if($activeMenu == 'home') btn-default  shadow centerbutton active @else btn btn-link-default @endif">
                                 <i class="material-icons">store_mall_directory</i>

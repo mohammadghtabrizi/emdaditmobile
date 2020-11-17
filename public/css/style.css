@@ -1154,13 +1154,12 @@ body a.btn-light-grey {
 /* product */
 
 .small-slide {
-    height: 150px;
+    height: 160px;
 }
 
 .small-slide .swiper-slide {
-    width: 165px;
-    padding-bottom: 10px;
-    padding-left: 15px;
+    width: 190px;
+    
 }
 
 .small-slide .swiper-slide .card {
@@ -1171,7 +1170,8 @@ body a.btn-light-grey {
 }
 
 .small-slide .swiper-slide .card-body {
-    position: relative
+    position: relative;
+    text-align: center;
 }
 
 .small-slide .swiper-slide .small-slide-right {
@@ -2188,4 +2188,9 @@ pre {
 .bg-discount-product{
     background-color: #6bb927;
     border-radius: 5px;
+}
+
+.pad-top{
+
+    padding-top: 5px;
 }

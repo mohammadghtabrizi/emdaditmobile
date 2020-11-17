@@ -43,13 +43,14 @@
         <img src="{{asset('img/image-4.png')}}" alt="خدمات امداد آی تی" class="apple right-image align-self-center">
         <div class="col align-self-center px-3 text-center">
         
-            @php $user = session('user') @endphp
+            
             <form class="form-signin shadow" method="POST" action="{{route('verification_user')}}">
+            <input type="hidden" value="{{$mobile}}" name="mobile" />
             @csrf
             <img src="{{asset('img/emdaditlogo.png')}}" alt="لوگو امداد آی تی" class="logo-small">
             <h5 class="text-dark " style="padding:20px;"> EmdadIT</h5>
             <h5 class="text-dark" style="text-align:right;"> کد تاییدیه ارسال شده را وارد نمایید</h5>
-            <p class="text-dark " style="text-align:right;"> کد تایید به شماره {{$user->mobile}} ارسال شده است .</p>
+            <p class="text-dark " style="text-align:right;"> کد تایید به شماره {{$mobile}} ارسال شده است .</p>
                 <div class="form-group float-label">
                     <input id="form_code" class="form-control" type="code" name="code" required="" autofocus="">
                     <label for="form_code" class="form-control-label">کد تایید</label>

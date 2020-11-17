@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCart extends Model
+class Discount extends Model
 {
     use HasFactory;
 
-    protected $table = 'product_cart';
-
-    protected $primaryKey = 'pc_id';
+    protected $table = 'discount';
 }
